@@ -13,7 +13,6 @@ import com.sg.assignment.util.QueryBuilder;
 
 public class UserDaoImpl implements UserDao {
 
-	// QueryBuilder builder = new QueryBuilder();
 	public static final  String DB_URL = "jdbc:postgresql://localhost:54330/postgres";
 	public static final String USER_NAME = "postgres";
 	public static final String PASSWORD = "postgres";
@@ -42,10 +41,10 @@ public class UserDaoImpl implements UserDao {
 
 			ResultSet result = pStatement.executeQuery();
 			while (result.next()) {
-				String firstName = result.getString(1);
-				String lastName = result.getString(2);
-				String email = result.getString(3);
-				int userId = result.getInt(4);
+				String firstName = result.getString("firstname");
+				String lastName = result.getString("lastname");
+				String email = result.getString("email");
+				int userId = result.getInt("userid");
 
 				User user = new User(firstName, lastName, email, userId);
 				userData.add(user);
